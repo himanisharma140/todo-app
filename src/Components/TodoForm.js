@@ -13,33 +13,34 @@ const TodoForm = () => {
   const [todos, setTodos] = useState([]);
   const isComplete = "false";
 
+  
+
+  const showToast = (todo) => {
+    toast.error('Due date of this task is expired: ' + todo.data ,{autoClose:10000})
+    const localTodos = localStorage.getItem("todos");
+    console.log(localTodos);
+    {
+      localTodos.map((ele,ind) => {
+      
+      localTodos[ind].isComplete = true;
+    })
+  }}
+  
+
+  
+
+  
   useEffect(() => {
     const localTodos = localStorage.getItem("todos");
-    //console.log(localTodos);
+    
     if (localTodos) {
       setTodos(JSON.parse(localTodos));
     }
   }, []);
-
-  const showToast = (todo) => {
-    toast.error('Due date of this task is expired: ' + todo.data ,{autoClose:10000})
-    
-  //   console.log(todos);
-  //   const updateditem = todos.map((ele,ind) => {
-      
-  //     todos[ind].isComplete = true;
-       
-  // }
-  // )
-  //console.log(updateditem);
-  // setTodos(updateditem);
-  }
-
-  
-
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -64,7 +65,7 @@ const TodoForm = () => {
       };
 
       setTodos([...todos, todo]);
-      console.log(todos);
+      //console.log(todos);
 
       setTodoString("");
       setDuedate("");
