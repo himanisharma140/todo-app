@@ -17,14 +17,7 @@ const TodoForm = () => {
 
   const showToast = (todo) => {
     toast.error('Due date of this task is expired: ' + todo.data ,{autoClose:10000})
-    const localTodos = localStorage.getItem("todos");
-    console.log(localTodos);
-    {
-      localTodos.map((ele,ind) => {
-      
-      localTodos[ind].isComplete = true;
-    })
-  }}
+    }
   
 
   
